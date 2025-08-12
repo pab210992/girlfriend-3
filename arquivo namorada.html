@@ -1,0 +1,294 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Para Giovanna — De: Pablo ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Parisienne&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#fff7fb; --accent:#ff6b94; --accent-2:#ffd6e8; --text:#3a2e3a; --muted:#7a596e;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,var(--bg1), #fff); color:var(--text); -webkit-font-smoothing:antialiased}
+
+    .page{padding:28px;display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .card{width:100%;max-width:980px;border-radius:18px;padding:22px;background:linear-gradient(180deg,#fff,#fff7fb);box-shadow:0 18px 50px rgba(120,60,100,0.08);border:6px solid transparent;position:relative;overflow:hidden}
+
+    /* decorative border */
+    .card:before{content:"";position:absolute;inset:0;border-radius:18px;padding:8px;background:conic-gradient(from 180deg,#ffd6e8, rgba(255,107,148,0.12));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);pointer-events:none}
+
+    header{display:flex;gap:16px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(255,100,140,0.12)}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    h1{font-family:Parisienne, cursive;font-size:36px;margin:0;color:#5a2130}
+    .sub{color:var(--muted);margin-top:6px}
+
+    .main{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:18px}
+
+    /* gallery */
+    .gallery{background:linear-gradient(180deg,rgba(255,250,252,0.9),#fff);border-radius:12px;padding:14px}
+    .thumbnails{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .thumb{border-radius:10px;overflow:hidden;border:4px solid #fff;box-shadow:0 8px 18px rgba(120,60,100,0.06);cursor:pointer;position:relative}
+    .thumb img{width:100%;height:96px;object-fit:cover;display:block}
+    .thumb .tag{position:absolute;left:8px;bottom:8px;background:rgba(255,107,148,0.95);color:white;padding:6px 8px;border-radius:8px;font-size:12px}
+
+    /* large carousel */
+    .carousel{margin-top:14px;position:relative}
+    .carousel .big{width:100%;height:420px;border-radius:12px;overflow:hidden;border:6px solid #fff;box-shadow:0 10px 40px rgba(120,60,100,0.08)}
+    .big img{width:100%;height:100%;object-fit:cover}
+    .caption{padding:12px;margin-top:10px;background:linear-gradient(90deg,#fff,#fff0f7);border-radius:12px;color:var(--muted);font-size:15px}
+
+    .controls{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:10px}
+    .btn{background:var(--accent);border:none;color:white;padding:8px 12px;border-radius:10px;cursor:pointer}
+    .heart{font-size:20px;margin-left:10px;color:#ff4d88}
+
+    /* sidebar */
+    .side{display:flex;flex-direction:column;gap:12px}
+    .cardmini{background:linear-gradient(90deg,var(--accent-2),#fff);padding:12px;border-radius:12px;text-align:left}
+    .small-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .small-photos img{width:100%;height:90px;object-fit:cover;border-radius:8px}
+
+    /* kuromi */
+    .kuromi{position:fixed;right:18px;bottom:18px;width:96px;animation:floatKuromi 3s ease-in-out infinite}
+    @keyframes floatKuromi{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+    /* modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:40}
+    .modal .box{width:min(920px,94%);background:white;border-radius:14px;overflow:hidden}
+    .modal .box img{width:100%;height:520px;object-fit:cover}
+    .modal .info{padding:12px;display:flex;align-items:center;justify-content:space-between}
+
+    /* timeline */
+    .timeline{display:flex;gap:8px;overflow:auto;padding:8px}
+    .timeline .dot{min-width:120px;background:linear-gradient(90deg,#fff,#fff7fb);padding:10px;border-radius:10px;border:2px solid rgba(255,107,148,0.12);font-size:13px;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:920px){.main{grid-template-columns:1fr} .big{height:320px} .thumbnails img{height:72px}}
+  </style>
+</head>
+<body>
+  <!-- Dados que você pode editar: nomes, apelidos, datas -->
+  <script>
+    // ====== CONFIGURE AQUI ======
+    const YOU = 'Pablo';
+    const PARTNER = 'Giovanna';
+    const NICKNAMES = ['Morceguinha','Vampira','Nenem'];
+    // formato YYYY-MM-DD (altere se quiser). START_DATE é quando começaram a namorar.
+    const START_DATE = '2025-12-12'; // altere aqui
+    // Se quiser comparar até uma data especial (aniversário), coloque 'YYYY-MM-DD'. Se vazio -> usa data atual.
+    const ANNIVERSARY = '';
+
+    // Lista de imagens que você mandou - deixe os nomes iguais aos arquivos na mesma pasta
+    const IMAGES = [
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.02.jpeg', caption: 'Nosso primeiro click juntos — sempre meu porto seguro.'},
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.03 (1).jpeg', caption: 'Caminhando de mãos dadas — amo cada segundo.'},
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.03 (2).jpeg', caption: 'Sorrisos que não saem da minha cabeça.'},
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.03 (3).jpeg', caption: 'Você e eu — combinação perfeita.'},
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.03.jpeg', caption: 'Dia no shopping, memórias simples e profundas.'},
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.04 (1).jpeg', caption: 'No espelho da vida, vejo nós.'},
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.04.jpeg', caption: 'Risadas, planejas e sonhos.'},
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.05 (1).jpeg', caption: 'Você faz tudo valer a pena.'},
+      {src: 'WhatsApp Image 2025-08-11 at 19.14.05.jpeg', caption: 'Meu sorriso favorito — seu sorriso.'}
+    ];
+
+    // pequenas utilidades
+    const formatDate = d => {
+      const o = new Date(d);
+      if (isNaN(o)) return d;
+      return ('0'+o.getDate()).slice(-2) + '/' + ('0'+(o.getMonth()+1)).slice(-2) + '/' + o.getFullYear();
+    };
+  </script>
+
+  <div class="page">
+    <div class="card">
+      <header>
+        <div class="avatar"><img id="headImg" src="WhatsApp Image 2025-08-11 at 19.14.05.jpeg" alt="Nós"></div>
+        <div>
+          <h1 id="title">Pablo ❤ Giovanna</h1>
+          <div class="sub" id="sub">Apelidos: <span id="nicklist"></span> · Começamos: <span id="startDate"></span></div>
+        </div>
+      </header>
+
+      <div class="main">
+        <section>
+          <div class="gallery">
+            <div class="thumbnails" id="thumbs"></div>
+
+            <div class="carousel">
+              <div class="big" id="bigWrap"><img id="bigImg" src="" alt=""></div>
+              <div class="caption" id="bigCaption"></div>
+              <div class="controls">
+                <button class="btn" id="prev">◀</button>
+                <button class="btn" id="next">▶</button>
+                <button class="btn" id="playPause">⏸</button>
+                <span class="heart" id="like">♡</span>
+                <button class="btn" id="download">Baixar ⬇</button>
+              </div>
+            </div>
+
+            <div style="margin-top:14px">
+              <strong>Lembranças mensais</strong>
+              <div class="timeline" id="timeline"></div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="side">
+          <div class="cardmini">
+            <h3>Sobre nós</h3>
+            <p id="about">Um cantinho só nosso, com fotos, apelidos e todas as memórias. Aperte a foto para ver em tamanho maior, passar para o lado ou salvar.</p>
+          </div>
+
+          <div class="cardmini">
+            <h3>Moments</h3>
+            <div class="small-photos" id="smallPhotos"></div>
+          </div>
+
+          <div class="cardmini">
+            <h3>Dicas</h3>
+            <p style="margin:0">Clique nas miniaturas — abra o modal — use ← → ou toque para navegar. Ajuste nomes e datas no topo do código.</p>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </div>
+
+  <img class="kuromi" src="kuromi.gif" alt="Kuromi">
+
+  <!-- Modal full -->
+  <div class="modal" id="modal">
+    <div class="box">
+      <img id="modalImg" src="" alt="">
+      <div class="info">
+        <div id="modalCaption" style="padding-left:10px;color:#333"></div>
+        <div style="display:flex;gap:8px;padding-right:12px">
+          <button class="btn" id="modalPrev">◀</button>
+          <button class="btn" id="modalNext">▶</button>
+          <button class="btn" id="modalClose">Fechar ✖</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- Inicialização e render ---
+    const thumbsEl = document.getElementById('thumbs');
+    const bigImg = document.getElementById('bigImg');
+    const bigCaption = document.getElementById('bigCaption');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const playPause = document.getElementById('playPause');
+    const likeBtn = document.getElementById('like');
+    const downloadBtn = document.getElementById('download');
+    const smallPhotos = document.getElementById('smallPhotos');
+
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalCaption = document.getElementById('modalCaption');
+    const modalPrev = document.getElementById('modalPrev');
+    const modalNext = document.getElementById('modalNext');
+    const modalClose = document.getElementById('modalClose');
+
+    const title = document.getElementById('title');
+    const nicklist = document.getElementById('nicklist');
+    const startDateEl = document.getElementById('startDate');
+
+    title.textContent = `${YOU} ❤ ${PARTNER}`;
+    nicklist.textContent = NICKNAMES.join(' • ');
+    startDateEl.textContent = START_DATE ? formatDate(START_DATE) : ' — ';
+
+    // preencher thumbs e smallPhotos
+    IMAGES.forEach((it, i) =>{
+      const d = document.createElement('div'); d.className='thumb';
+      d.innerHTML = `<img src="${it.src}" alt=""><div class="tag">${NICKNAMES[i % NICKNAMES.length]}</div>`;
+      d.addEventListener('click', ()=> openModal(i));
+      d.addEventListener('dblclick', ()=> toggleLike());
+      thumbsEl.appendChild(d);
+
+      const s = document.createElement('img'); s.src = it.src; smallPhotos.appendChild(s);
+    });
+
+    // big carousel controls
+    let current = 0;
+    function showBig(i){
+      current = (i + IMAGES.length) % IMAGES.length;
+      bigImg.src = IMAGES[current].src;
+      bigCaption.textContent = IMAGES[current].caption + ' — ' + (NICKNAMES[current % NICKNAMES.length]);
+    }
+    showBig(0);
+
+    prevBtn.addEventListener('click', ()=> showBig(current-1));
+    nextBtn.addEventListener('click', ()=> showBig(current+1));
+
+    // autoplay / play-pause
+    let playing = true; let autoplayId = setInterval(()=> showBig(current+1), 4500);
+    playPause.addEventListener('click', ()=>{
+      if(playing){ clearInterval(autoplayId); playPause.textContent='▶'; playing=false } else { autoplayId=setInterval(()=> showBig(current+1),4500); playPause.textContent='⏸'; playing=true }
+    });
+
+    // like toggle
+    function toggleLike(){ likeBtn.textContent = likeBtn.textContent === '♡' ? '♥' : '♡'; }
+    likeBtn.addEventListener('click', toggleLike);
+
+    // download
+    downloadBtn.addEventListener('click', ()=>{
+      const a = document.createElement('a'); a.href = IMAGES[current].src; a.download = `foto_${current+1}.jpg`; document.body.appendChild(a); a.click(); a.remove();
+    });
+
+    // --- Modal behaviour ---
+    function openModal(i){
+      modal.style.display='flex';
+      showModal(i);
+    }
+    function showModal(i){
+      current = (i + IMAGES.length) % IMAGES.length;
+      modalImg.src = IMAGES[current].src;
+      modalCaption.textContent = `${IMAGES[current].caption} — ${NICKNAMES[current % NICKNAMES.length]} — ${formatDate(IMAGES[current].date || START_DATE)}`;
+    }
+    modalPrev.addEventListener('click', ()=> showModal(current-1));
+    modalNext.addEventListener('click', ()=> showModal(current+1));
+    modalClose.addEventListener('click', ()=> modal.style.display='none');
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.style.display='none' });
+
+    // keyboard nav
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowLeft') showBig(current-1);
+      if(e.key === 'ArrowRight') showBig(current+1);
+      if(e.key === 'Escape') modal.style.display='none';
+    });
+
+    // touch swipe for modal and main
+    let startX = 0;
+    function touchStart(e){ startX = e.touches[0].clientX }
+    function touchEnd(e){
+      const dx = (e.changedTouches[0].clientX - startX);
+      if(Math.abs(dx) > 50){ if(dx < 0) showBig(current+1); else showBig(current-1) }
+    }
+    document.getElementById('bigWrap').addEventListener('touchstart', touchStart);
+    document.getElementById('bigWrap').addEventListener('touchend', touchEnd);
+    modalImg.addEventListener('touchstart', touchStart);
+    modalImg.addEventListener('touchend', touchEnd);
+
+    // timeline generator (mensal) entre START_DATE e ANNIVERSARY (ou hoje se vazio)
+    const timelineEl = document.getElementById('timeline');
+    const sDate = new Date(START_DATE);
+    const aDate = ANNIVERSARY ? new Date(ANNIVERSARY) : new Date();
+    if(!isNaN(sDate) && !isNaN(aDate) && sDate <= aDate){
+      let cur = new Date(sDate.getTime());
+      while(cur <= aDate){
+        const el = document.createElement('div'); el.className='dot';
+        el.innerHTML = `<strong>${('0'+cur.getDate()).slice(-2)}/${('0'+(cur.getMonth()+1)).slice(-2)}</strong><div style="font-size:12px;margin-top:6px">${cur.getFullYear()}</div>`;
+        timelineEl.appendChild(el);
+        cur.setMonth(cur.getMonth()+1);
+      }
+    } else {
+      timelineEl.innerHTML = '<div class="dot">Ajuste START_DATE e ANNIVERSARY no topo do código</div>';
+    }
+
+    // fill header avatar if image exists
+    document.getElementById('headImg').src = IMAGES[0] ? IMAGES[0].src : '';
+
+  </script>
+</body>
+</html>
